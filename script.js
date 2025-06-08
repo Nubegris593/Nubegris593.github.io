@@ -176,24 +176,8 @@ document.addEventListener('DOMContentLoaded', animateOnScroll);
 
 // Carrusel de menú manual
 function initMenuCarousel() {
-    // Obtener recetas (de localStorage o las 3 por defecto)
-    let recipes = JSON.parse(localStorage.getItem('recipes')) || [
-        {
-            name: 'Plato Especial',
-            description: 'Descubre nuestra receta más popular con ingredientes frescos y sabores únicos.',
-            image: 'https://via.placeholder.com/300x200',
-        },
-        {
-            name: 'Postre Casero',
-            description: 'Un delicioso postre que conquistará a todos tus invitados.',
-            image: 'https://via.placeholder.com/300x200',
-        },
-        {
-            name: 'Entrada Gourmet',
-            description: 'Una entrada elegante y fácil de preparar para cualquier ocasión.',
-            image: 'https://via.placeholder.com/300x200',
-        }
-    ];
+    // Obtener recetas (de localStorage)
+    let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     let current = 0;
     const slide = document.getElementById('carousel-slide');
     const prevBtn = document.getElementById('carousel-prev');
@@ -201,6 +185,10 @@ function initMenuCarousel() {
 
     function renderCard(idx) {
         if (!slide) return;
+        if (recipes.length === 0) {
+            slide.innerHTML = '<div style="text-align:center;color:#888;padding:40px 0;">No hay platos en el menú.<br>Agrega uno desde el administrador.</div>';
+            return;
+        }
         const recipe = recipes[idx];
         slide.innerHTML = `<article class="recipe-card fade-in-up visible">
             <div class="recipe-image">
@@ -214,10 +202,12 @@ function initMenuCarousel() {
     }
 
     function showPrev() {
+        if (recipes.length === 0) return;
         current = (current - 1 + recipes.length) % recipes.length;
         renderCard(current);
     }
     function showNext() {
+        if (recipes.length === 0) return;
         current = (current + 1) % recipes.length;
         renderCard(current);
     }
@@ -230,10 +220,9 @@ function initMenuCarousel() {
 
     // Si las recetas cambian dinámicamente, actualizar el carrusel
     window.updateMenuCarousel = function() {
-        recipes = JSON.parse(localStorage.getItem('recipes')) || recipes;
+        recipes = JSON.parse(localStorage.getItem('recipes')) || [];
         if (current >= recipes.length) current = 0;
         renderCard(current);
     };
 }
-document.addEventListener('DOMContentLoaded', initMenuCarousel);
-// Si se agregan recetas dinámicamente, llama a window.updateMenuCarousel() después de guardar 
+document.addEventListener('DOMContentLoaded', initMenuCarousel); 
