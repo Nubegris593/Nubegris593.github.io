@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyD Watidolar - Blog de Comida</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                MyD Watidolar
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#recetas">Menú</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero zoom-in">
+            <div class="hero-content">
+                <h1>MyD Watidolar</h1>
+                <p class="subtitle">Comida casera con sabor a hogar, preparada con cariño y los mejores ingredientes</p>
+                <button class="cta-button">Explorar Menú</button>
+            </div>
+        </section>
+
+        <section id="recetas" class="recipes fade-in-up">
+            <h2>Nuestro Menú</h2>
+            <div class="carousel-container">
+                <button class="carousel-arrow left" id="carousel-prev" aria-label="Anterior">&#8592;</button>
+                <div class="carousel-slide" id="carousel-slide">
+                    <!-- Aquí se mostrará la receta activa -->
+                </div>
+                <button class="carousel-arrow right" id="carousel-next" aria-label="Siguiente">&#8594;</button>
+            </div>
+        </section>
+
+        <section id="servicios" class="services fade-in-left">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Servicio a Domicilio</h3>
+                    <p>Llevamos tus pedidos hasta la puerta de tu casa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact fade-in-right">
+            <div class="contact-card">
+                <h2>Contacto</h2>
+                <a href="https://wa.me/5939787627780" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+                </a>
+            </div>
+            <div class="map-container">
+                <iframe id="contact-map" src="https://www.google.com/maps?q=-2.1648016,-79.8892722&z=17&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <script>
+            // Mostrar la ubicación guardada en el mapa de contacto si existe
+            (function() {
+                const data = localStorage.getItem('mapLocation');
+                if (data) {
+                    try {
+                        const { lat, lng } = JSON.parse(data);
+                        if (lat && lng) {
+                            document.getElementById('contact-map').src = `https://www.google.com/maps?q=${lat},${lng}&z=17&output=embed`;
+                        }
+                    } catch {}
+                }
+            })();
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MyD Watidolar. Todos los derechos reservados.</p>
+    </footer>
+
+    <button id="theme-toggle" class="theme-toggle" title="Cambiar tema">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button id="theme-innovate" class="theme-toggle innovate-toggle" title="Tema innovador">
+        <i class="fas fa-bolt"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+    // Botón principal: claro <-> darksoft
+    (function() {
+        const btn = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        const themes = ['light', 'darksoft'];
+        const icons = {
+            light: '<i class="fas fa-moon"></i>',
+            darksoft: '<i class="fas fa-adjust"></i>'
+        };
+        function setTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            btn.innerHTML = icons[theme] || icons.light;
+        }
+        btn.addEventListener('click', () => {
+            // Si está en innovador, no cambiar
+            if (root.getAttribute('data-theme') === 'dark') return;
+            const current = root.getAttribute('data-theme') || 'light';
+            const idx = themes.indexOf(current);
+            const next = themes[(idx + 1) % themes.length];
+            setTheme(next);
+        });
+        // Inicializar
+        const saved = localStorage.getItem('theme') || 'light';
+        setTheme(saved === 'dark' ? 'light' : saved);
+    })();
+    // Botón innovador
+    (function() {
+        const btn = document.getElementById('theme-innovate');
+        const root = document.documentElement;
+        btn.addEventListener('click', () => {
+            if (root.getAttribute('data-theme') === 'dark') {
+                // Volver al tema anterior guardado
+                const prev = localStorage.getItem('theme') || 'light';
+                root.setAttribute('data-theme', prev);
+            } else {
+                // Guardar el tema actual y activar innovador
+                localStorage.setItem('theme', root.getAttribute('data-theme'));
+                root.setAttribute('data-theme', 'dark');
+            }
+        });
+        // Si el tema guardado es innovador, activarlo
+        if (localStorage.getItem('theme') === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+        }
+    })();
+    </script>
+</body>
+</html> 

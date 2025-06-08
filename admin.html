@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyD Watidolar - Panel de Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="admin-login" class="admin-login">
+        <div class="login-container">
+            <h2>Acceso Administrador</h2>
+            <form id="login-form">
+                <input type="password" id="admin-password" placeholder="Contraseña" required>
+                <button type="submit">Acceder</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <header>
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    MyD Watidolar - Panel de Control
+                </div>
+                <button id="logout-button" class="logout-button">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="admin-section">
+                <h2>Administrar Menú</h2>
+                <div class="admin-controls">
+                    <form id="add-recipe-form">
+                        <input type="text" id="recipe-name" placeholder="Nombre del plato" required>
+                        <input type="text" id="recipe-description" placeholder="Descripción" required>
+                        <div class="image-upload-container">
+                            <input type="file" id="recipe-image" accept="image/*" required>
+                            <div class="image-preview" id="image-preview">
+                                <p>Vista previa de la imagen</p>
+                            </div>
+                        </div>
+                        <button type="submit">Añadir Plato</button>
+                    </form>
+                </div>
+                <div id="recipes-container" class="recipes-grid">
+                    <!-- Los platos se añadirán aquí dinámicamente -->
+                </div>
+                <hr style="margin:40px 0;">
+                <div class="admin-controls">
+                    <h3>Cambiar ubicación del mapa</h3>
+                    <form id="map-location-form">
+                        <input type="text" id="map-lat" placeholder="Latitud" step="any" required>
+                        <input type="text" id="map-lng" placeholder="Longitud" step="any" required>
+                        <button type="submit">Guardar Ubicación</button>
+                    </form>
+                    <div id="map-location-preview" style="margin-top:16px;"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html> 

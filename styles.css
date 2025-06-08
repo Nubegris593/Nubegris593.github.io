@@ -1,0 +1,979 @@
+/* Variables globales */
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #ff8e8e;
+    --text-color: #2d3436;
+    --light-bg: #f9f9f9;
+    --white: #ffffff;
+    --accent-color: #ffd93d;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navegación */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Sección Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background-color: var(--secondary-color);
+}
+
+/* Sección Recetas */
+.recipes {
+    padding: 5rem 1rem;
+    background-color: var(--light-bg);
+}
+
+.recipes h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recipe-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card:hover .recipe-image img {
+    transform: scale(1.1);
+}
+
+.recipe-content {
+    padding: 1.5rem;
+}
+
+.recipe-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--secondary-color);
+}
+
+/* Secciones generales */
+section {
+    padding: 5rem 1rem;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+/* Sección Acerca */
+.about {
+    background-color: var(--light-bg);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Sección Servicios */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Sección Contacto */
+.contact {
+    background: linear-gradient(135deg, #f8fafc 60%, #e3f0ff 100%);
+    padding: 60px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 420px;
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px 0 rgba(60, 60, 120, 0.10);
+    padding: 40px 32px 32px 32px;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.contact h2 {
+    color: #2d3a4a;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #25D366 60%, #128C7E 100%);
+    color: white;
+    padding: 18px 38px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 600;
+    box-shadow: 0 4px 18px 0 rgba(37, 211, 102, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 18px;
+    border: none;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 8px 32px 0 rgba(37, 211, 102, 0.22);
+    background: linear-gradient(90deg, #128C7E 60%, #25D366 100%);
+}
+
+.whatsapp-button i {
+    font-size: 1.7em;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px 0 rgba(60, 60, 120, 0.10);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 18px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .contact-card, .map-container {
+        max-width: 98vw;
+        padding: 18px 6px;
+    }
+    .contact {
+        padding: 30px 0 30px 0;
+    }
+    .map-container iframe {
+        height: 200px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Estilos para el botón de WhatsApp */
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #25D366;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.05);
+}
+
+.whatsapp-button i {
+    font-size: 1.5em;
+}
+
+/* Estilos para la sección de administración */
+.admin-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.admin-controls {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+#add-recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#add-recipe-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#add-recipe-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#add-recipe-form button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Estilos para el botón de acceso administrador */
+.admin-access-button {
+    background-color: #2196F3;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin: 20px auto;
+    display: block;
+}
+
+.admin-access-button:hover {
+    background-color: #1976D2;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .recipes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 3rem 1rem;
+    }
+    
+    .admin-controls {
+        padding: 0 20px;
+    }
+    
+    .whatsapp-button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+    
+    .admin-access-button {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+/* Estilos para la página de administración */
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-container input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.login-container button {
+    background-color: #2196F3;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #1976D2;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+.admin-panel {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.admin-panel header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.admin-panel nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Estilos para la subida de imágenes */
+.image-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.image-upload-container input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #2196F3;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+}
+
+.image-upload-container input[type="file"]:hover {
+    border-color: #1976D2;
+    background-color: #e3f2fd;
+}
+
+.image-preview {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.image-preview p {
+    color: #666;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Ajustes responsivos para la subida de imágenes */
+@media (max-width: 768px) {
+    .image-preview {
+        height: 150px;
+    }
+}
+
+/* Botón flotante de cambio de tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 4px 24px 0 rgba(60,60,120,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #222;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.theme-toggle:hover {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 8px 32px 0 #25d36699;
+}
+
+/* Tema oscuro innovador */
+[data-theme="dark"] {
+    --primary-color: #25d366;
+    --secondary-color: #128C7E;
+    --bg-dark: #181c24;
+    --glass: rgba(24,28,36,0.7);
+    --neon: #25d3ff;
+    --neon2: #ff3cac;
+    --text-light: #f8fafc;
+    --text-neon: #25d3ff;
+    background: linear-gradient(120deg, #181c24 0%, #232946 100%);
+    background-attachment: fixed;
+    color: var(--text-light);
+}
+[data-theme="dark"] body {
+    background: linear-gradient(120deg, #181c24 0%, #232946 100%);
+    background-attachment: fixed;
+    color: var(--text-light);
+}
+[data-theme="dark"] .contact-card, [data-theme="dark"] .admin-panel, [data-theme="dark"] .service-card, [data-theme="dark"] .admin-section, [data-theme="dark"] .login-container {
+    background: var(--glass);
+    box-shadow: 0 8px 40px 0 #25d3ff33, 0 1.5px 8px 0 #ff3cac22;
+    border: 1.5px solid var(--neon2);
+    backdrop-filter: blur(8px);
+}
+[data-theme="dark"] .whatsapp-button, [data-theme="dark"] .cta-button {
+    background: linear-gradient(90deg, var(--neon2) 0%, var(--neon) 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 var(--neon2);
+    border: none;
+    text-shadow: 0 0 8px var(--neon);
+}
+[data-theme="dark"] .whatsapp-button:hover, [data-theme="dark"] .cta-button:hover {
+    background: linear-gradient(90deg, var(--neon) 0%, var(--neon2) 100%);
+    box-shadow: 0 8px 32px 0 var(--neon);
+}
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
+    color: var(--text-neon);
+    text-shadow: 0 0 12px var(--neon2), 0 0 2px #fff;
+    letter-spacing: 1.5px;
+}
+[data-theme="dark"] .map-container, [data-theme="dark"] .image-preview {
+    box-shadow: 0 4px 32px 0 var(--neon2);
+    border: 1.5px solid var(--neon);
+    background: rgba(24,28,36,0.85);
+}
+[data-theme="dark"] .theme-toggle {
+    background: linear-gradient(135deg, var(--neon2) 0%, var(--neon) 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 var(--neon2);
+}
+[data-theme="dark"] .theme-toggle:hover {
+    background: #fff;
+    color: var(--neon2);
+    box-shadow: 0 8px 32px 0 var(--neon);
+}
+[data-theme="dark"] a, [data-theme="dark"] .read-more {
+    color: var(--neon);
+    text-shadow: 0 0 6px var(--neon2);
+}
+[data-theme="dark"] input, [data-theme="dark"] textarea {
+    background: rgba(24,28,36,0.7);
+    color: var(--text-light);
+    border: 1.5px solid var(--neon2);
+}
+[data-theme="dark"] input::placeholder, [data-theme="dark"] textarea::placeholder {
+    color: #b0eaff;
+    opacity: 1;
+}
+[data-theme="dark"] .delete-button, [data-theme="dark"] .logout-button {
+    background: linear-gradient(90deg, #ff3cac 0%, #784ba0 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 12px 0 #ff3cac99;
+}
+[data-theme="dark"] .delete-button:hover, [data-theme="dark"] .logout-button:hover {
+    background: linear-gradient(90deg, #784ba0 0%, #ff3cac 100%);
+    box-shadow: 0 4px 24px 0 #784ba0;
+}
+/* Animación de fondo */
+[data-theme="dark"] body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    background: radial-gradient(circle at 20% 30%, #25d3ff44 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, #ff3cac33 0%, transparent 60%);
+    animation: bgmove 12s linear infinite alternate;
+    pointer-events: none;
+}
+@keyframes bgmove {
+    0% { background-position: 20% 30%, 80% 70%; }
+    100% { background-position: 80% 70%, 20% 30%; }
+}
+
+/* Tema oscuro suave (darksoft) - REDISEÑADO */
+[data-theme="darksoft"] {
+    --primary-color: #2563eb;
+    --secondary-color: #6d28d9;
+    --bg-dark: #181818;
+    --glass: #22232a;
+    --text-light: #e0e0e0;
+    --text-muted: #b0b0b0;
+    --card: #23232b;
+    --accent: #2563eb;
+    --border: #22232a;
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
+[data-theme="darksoft"] body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
+[data-theme="darksoft"] .contact-card, [data-theme="darksoft"] .admin-panel, [data-theme="darksoft"] .service-card, [data-theme="darksoft"] .admin-section, [data-theme="darksoft"] .login-container {
+    background: var(--card);
+    box-shadow: 0 2px 16px 0 #000a;
+    border: 1.5px solid var(--border);
+    color: var(--text-light);
+}
+[data-theme="darksoft"] .whatsapp-button, [data-theme="darksoft"] .cta-button {
+    background: var(--primary-color);
+    color: #e0e0e0;
+    box-shadow: 0 2px 8px 0 #0008;
+    border: none;
+    text-shadow: none;
+    font-weight: 600;
+}
+[data-theme="darksoft"] .whatsapp-button:hover, [data-theme="darksoft"] .cta-button:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+[data-theme="darksoft"] h1, [data-theme="darksoft"] h2, [data-theme="darksoft"] h3 {
+    color: var(--primary-color);
+    text-shadow: none;
+    letter-spacing: 1.2px;
+}
+[data-theme="darksoft"] .map-container, [data-theme="darksoft"] .image-preview {
+    box-shadow: 0 2px 12px 0 #000a;
+    border: 1.5px solid var(--border);
+    background: #181818;
+}
+[data-theme="darksoft"] .theme-toggle {
+    background: var(--primary-color);
+    color: #e0e0e0;
+    box-shadow: 0 2px 8px 0 #0008;
+}
+[data-theme="darksoft"] .theme-toggle:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+[data-theme="darksoft"] a, [data-theme="darksoft"] .read-more {
+    color: var(--secondary-color);
+    text-shadow: none;
+}
+[data-theme="darksoft"] input, [data-theme="darksoft"] textarea {
+    background: #181818;
+    color: var(--text-light);
+    border: 1.5px solid var(--border);
+}
+[data-theme="darksoft"] input::placeholder, [data-theme="darksoft"] textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+[data-theme="darksoft"] .delete-button, [data-theme="darksoft"] .logout-button {
+    background: var(--secondary-color);
+    color: #e0e0e0;
+    border: none;
+    box-shadow: 0 1px 4px 0 #0008;
+}
+[data-theme="darksoft"] .delete-button:hover, [data-theme="darksoft"] .logout-button:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+[data-theme="darksoft"] body::before {
+    display: none;
+}
+
+[data-theme="darksoft"] body,
+[data-theme="darksoft"] main,
+[data-theme="darksoft"] section,
+[data-theme="darksoft"] .hero,
+[data-theme="darksoft"] .recipes,
+[data-theme="darksoft"] .services,
+[data-theme="darksoft"] .contact {
+    background: #181818 !important;
+}
+[data-theme="darksoft"] .recipe-card {
+    background: #23232b;
+    color: #e0e0e0;
+    box-shadow: 0 2px 16px 0 #000a;
+    border: 1.5px solid #22232a;
+}
+
+[data-theme="darksoft"] .hero {
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat !important;
+}
+
+[data-theme="darksoft"] .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1;
+    pointer-events: none;
+}
+[data-theme="darksoft"] .hero {
+    position: relative;
+    overflow: hidden;
+}
+[data-theme="darksoft"] .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.theme-toggle.innovate-toggle {
+    right: 100px;
+    background: linear-gradient(135deg, #ff3cac 0%, #25d3ff 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 #ff3cac99;
+    font-size: 2rem;
+    border: none;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.theme-toggle.innovate-toggle:hover {
+    background: linear-gradient(135deg, #25d3ff 0%, #ff3cac 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px 0 #25d3ff99;
+}
+
+/* Animaciones innovadoras al hacer scroll */
+.animated {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+.animated.visible {
+    opacity: 1;
+    transform: none;
+}
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+}
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+}
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.85);
+}
+.visible.fade-in-up,
+.visible.fade-in-left,
+.visible.fade-in-right,
+.visible.zoom-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+/* Carrusel de menú */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px auto 0 auto;
+    max-width: 600px;
+    position: relative;
+}
+.carousel-arrow {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 #0004;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    z-index: 2;
+}
+.carousel-arrow:hover {
+    background: #6d28d9;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #6d28d988;
+}
+.carousel-slide {
+    width: 340px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s cubic-bezier(.4,0,.2,1);
+}
+.carousel-slide .recipe-card {
+    width: 100%;
+    min-height: 360px;
+    margin: 0;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s, transform 0.5s;
+}
+@media (max-width: 600px) {
+    .carousel-slide {
+        width: 98vw;
+        min-height: 260px;
+    }
+    .carousel-container {
+        gap: 8px;
+    }
+    .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.3rem;
+    }
+} 
